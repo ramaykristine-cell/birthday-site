@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom right, #ffb6c1, #ffe4e1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  max-width: 350px;
+  z-index: 10;
+}
+
+h1, img, p {
+  opacity: 0;
+}
+
+h1 {
+  color: #ff69b4;
+  animation: dropIn 1s ease forwards;
+}
+
+img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 15px;
+  animation: zoomFade 1.2s ease forwards;
+  animation-delay: 0.5s;
+}
+
+p {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #555;
+  animation: slideUp 1s ease forwards;
+  animation-delay: 1s;
+}
+
+button {
+  background: #ff69b4;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff1493;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  color: #ff69b4;
+  font-size: 20px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Animations */
+@keyframes dropIn {
+  from { transform: translateY(-30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes zoomFade {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <button onclick="startSurprise()">Click me 💖</button>
+
+  <h1>Happy Birthday MELISSA!!!</h1>
+
+  <img src="her-picture.jpg" alt="Birthday Girl">
+
+  <p>
+    Wishing you a day filled with love, laughter, and happiness 💕<br>
+    You deserve all the joy in the world.
+  </p>
+</div>
+
+<audio id="bgMusic" src="happy-birthday-korean.mp3"></audio>
+
+<script>
+function startSurprise() {
+  document.querySelector("button").style.display = "none";
+
+  document.querySelector("h1").style.opacity = "1";
+  document.querySelector("img").style.opacity = "1";
+  document.querySelector("p").style.opacity = "1";
+
+  document.getElementById("bgMusic").play();
+
+  setInterval(createHeart, 300);
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}
+</script>
+
+</body>
+</html>
